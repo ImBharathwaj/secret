@@ -5,15 +5,15 @@ github_client = RESTClient(base_url="https://api.github.com")  # (1)
 
 @dlt.resource
 def get_issues():
-    for page in github_client.paginate(                        # (2)
-        "/repos/Datavault-UK/automate-dv/issues",                           # (3)
-        params={                                               # (4)
+    for page in github_client.paginate(
+        "/repos/Datavault-UK/automate-dv/issues",
+        params={
             "per_page": 100,
             "sort": "updated",
             "direction": "desc",
         },
     ):
-        yield page                                             # (5)
+        yield page
 
 
 pipeline = dlt.pipeline(
